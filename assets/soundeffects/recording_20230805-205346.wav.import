@@ -1,0 +1,23 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/recording_20230805-205346.wav-89b075abaa8b5f1482d7b097b003db76.sample"
+
+[deps]
+
+source_file="res://assets/soundeffects/recording_20230805-205346.wav"
+dest_files=[ "res://.import/recording_20230805-205346.wav-89b075abaa8b5f1482d7b097b003db76.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

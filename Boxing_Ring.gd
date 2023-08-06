@@ -3,16 +3,18 @@ extends Node2D
 var selected_player_1 : PackedScene
 var selected_player_2 : PackedScene
 
-var player_1 : Node2D
-var player_2 : Node2D
+
 
 var characters = [
 	preload("res://Rohan.tscn"),
-	preload("res://Kaiyus.tscn")
+	preload("res://Kaeus.tscn"),
+	preload("res://Logan.tscn"),
+	preload("res://Thayden.tscn"),
+	preload("res://cayen.tscn")
 ]
 
-
-
+func _ready():
+	$BackgroundMusic.playing = true
 
 func _physics_process(delta):
 	pass
@@ -20,18 +22,20 @@ func _physics_process(delta):
 
 func _on_Start_Button_button_down():
 	$Start_Button.hide()
+	$Player_1_Select.hide()
+	$Player_2_Select.hide()
 	
-	player_1 = selected_player_1.instance()
-	player_2 = selected_player_2.instance()
+	Global.player_1 = selected_player_1.instance()
+	Global.player_2 = selected_player_2.instance()
 	
-	player_1.global_position = Vector2(100,300)
-	player_2.global_position = Vector2(924,300)
+	Global.player_1.global_position = Vector2(400,500)
+	Global.player_2.global_position = Vector2(1500,500)
 	
-	player_1.player_number = 1
-	player_2.player_number = 2
+	Global.player_1.player_number = 1
+	Global.player_2.player_number = 2
 	
-	add_child(player_1)
-	add_child(player_2)
+	add_child(Global.player_1)
+	add_child(Global.player_2)
 
 
 

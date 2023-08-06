@@ -1,0 +1,16 @@
+[gd_scene format=2]
+
+[node name="cayen_lightning_effect" type="CPUParticles2D"]
+emitting = false
+amount = 1
+lifetime = 2.0
+one_shot = true
+explosiveness = 0.5
+spread = 180.0
+gravity = Vector2( 0, 0 )
+initial_velocity = 1000.0
+initial_velocity_random = 0.3
+angular_velocity = 2000.0
+angular_velocity_random = 1.0
+scale_amount = 25.0
+color = Color( 0, 0.431373, 0.984314, 1 )
