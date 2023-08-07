@@ -3,7 +3,7 @@ extends KinematicBody2D
 var gravity = 25
 var jumpforce = 1000
 var Fire = preload("res://Rohan_fire.tscn")
-var health = 25
+var health = 35
 var attacking = false
 var can_move = true
 var knockback = 0
@@ -15,11 +15,14 @@ var speed = 600
 
 func _ready():
 	
+	$AnimatedSprite.scale = Vector2(1,1)
+	$AnimatedSprite.position.y = 0
+	
 	$ProgressBar.max_value = health
 	
 	$AnimatedSprite.position.x = 0
 	
-	
+	$chili_pepper.hide()
 	
 	if player_number == 1:
 		other_character = Global.player_2
@@ -83,15 +86,30 @@ func attack():
 	can_hit = false
 	attacking = true
 	velocity.x = 0
-	if not $attack.playing:
-		$attack.play()
+
 	$AnimatedSprite.play("attack")
+	$crunch.play()
+	
+	if $AnimatedSprite.flip_h:
+		$AnimationPlayer.play("chili_pepper_left")
+	else:
+		$AnimationPlayer.play("chili_pepper_right")
 	
 	if $AnimatedSprite.flip_h == true:
 		$Position2D.position.x = -440
 	else:
 		$Position2D.position.x = 440
+		
+	$AnimatedSprite.position.y = -10
+	$AnimatedSprite.scale = Vector2(.8 , .8)
+	yield($AnimationPlayer , "animation_finished")
+	$AnimatedSprite.scale = Vector2(1 , 1)
+	$AnimatedSprite.position.y = 0
 	
+	if not $attack.playing:
+		$attack.play()
+		
+	$AnimatedSprite.play("idle")
 	
 	var fire = Fire.instance()
 	fire.global_position = $Position2D.global_position

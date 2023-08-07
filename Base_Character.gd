@@ -20,7 +20,6 @@ func _ready():
 	
 	$AnimatedSprite.position.x = 0
 	
-	$attack/CollisionShape2D.disabled = true
 	
 	if player_number == 1:
 		other_character = Global.player_2
@@ -57,25 +56,18 @@ func _physics_process(delta):
 		
 		velocity.y += gravity
 		
-		velocity = move_and_slide(velocity)
+		velocity = move_and_slide(velocity , Vector2.UP)
 		
 		if velocity.x < 0:
 			$AnimatedSprite.flip_h = true
 		elif velocity.x > 0:
 			$AnimatedSprite.flip_h = false
 		
-		if attacking:
-			if $attack.overlaps_body(other_character):
-				other_character.hit()
-			$attack/CollisionShape2D.disabled = true
 		
 		if player_number == 1 and Input.is_action_just_pressed("player_1_attack") and can_hit:
 			attack()
 		elif player_number == 2 and Input.is_action_just_pressed("player_2_attack") and can_hit:
 			attack()
-		
-		
-		
 		
 		
 		$HealthBar.value = health

@@ -1,6 +1,6 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=16 format=2]
 
-[ext_resource path="res://icon.png" type="Texture" id=1]
+[ext_resource path="res://assets/cayen-icon-128.png" type="Texture" id=1]
 [ext_resource path="res://Boxing_Ring.gd" type="Script" id=2]
 [ext_resource path="res://assets/rohan-arena.jpg" type="Texture" id=3]
 [ext_resource path="res://assets/background.wav" type="AudioStream" id=4]
@@ -8,6 +8,10 @@
 [ext_resource path="res://assets/rohan-icon-128.png" type="Texture" id=6]
 [ext_resource path="res://assets/logan-icon-128.png" type="Texture" id=7]
 [ext_resource path="res://assets/thayden-1.png" type="Texture" id=8]
+[ext_resource path="res://SelectionFont.tres" type="DynamicFont" id=9]
+[ext_resource path="res://assets/button-start.png" type="Texture" id=10]
+[ext_resource path="res://assets/joah-icon.png" type="Texture" id=11]
+[ext_resource path="res://assets/button-retry.png" type="Texture" id=12]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 48, 548.25 )
@@ -27,6 +31,8 @@ scale = Vector2( 1.95311, 1.46247 )
 texture = ExtResource( 3 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 2
+collision_mask = 0
 
 [node name="Wall_2" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2( 193, 551 )
@@ -44,32 +50,53 @@ shape = SubResource( 3 )
 stream = ExtResource( 4 )
 
 [node name="Player_1_Select" type="ItemList" parent="."]
-margin_left = 344.0
-margin_top = 54.0
-margin_right = 486.0
-margin_bottom = 881.0
-items = [ "Rohan", ExtResource( 6 ), false, "Kaeus", ExtResource( 5 ), false, "Logan", ExtResource( 7 ), false, "Thayden", ExtResource( 8 ), false, "Cayen", ExtResource( 1 ), false ]
-icon_mode = 0
+margin_left = 200.0
+margin_top = 60.0
+margin_right = 550.0
+margin_bottom = 960.0
+custom_colors/font_color_selected = Color( 1, 0, 0, 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_constants/vseparation = 10
+custom_constants/hseparation = 15
+custom_fonts/font = ExtResource( 9 )
+items = [ "Rohan", ExtResource( 6 ), false, "Kaeus", ExtResource( 5 ), false, "Logan", ExtResource( 7 ), false, "Thayden", ExtResource( 8 ), false, "Cayen", ExtResource( 1 ), false, "Joah", ExtResource( 11 ), false ]
+max_columns = 2
+same_column_width = true
 
 [node name="Player_2_Select" type="ItemList" parent="."]
-margin_left = 1343.0
-margin_top = 105.0
-margin_right = 1487.0
-margin_bottom = 894.0
-items = [ "Rohan", ExtResource( 6 ), false, "Kaeus", ExtResource( 5 ), false, "Logan", ExtResource( 7 ), false, "Thayden", ExtResource( 8 ), false, "Cayen", ExtResource( 1 ), false ]
-icon_mode = 0
+margin_left = 1377.0
+margin_top = 35.0
+margin_right = 1727.0
+margin_bottom = 935.0
+custom_colors/font_color_selected = Color( 1, 0, 0, 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_constants/vseparation = 10
+custom_constants/hseparation = 15
+custom_fonts/font = ExtResource( 9 )
+items = [ "Rohan", ExtResource( 6 ), false, "Kaeus", ExtResource( 5 ), false, "Logan", ExtResource( 7 ), false, "Thayden", ExtResource( 8 ), false, "Cayen", ExtResource( 1 ), false, "Joah", ExtResource( 11 ), false ]
+max_columns = 2
+same_column_width = true
 
 [node name="Start_Button" type="TextureButton" parent="."]
 anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-margin_left = 884.0
-margin_top = 602.0
-margin_right = 948.0
-margin_bottom = 666.0
-texture_normal = ExtResource( 1 )
+margin_left = 822.0
+margin_top = 547.0
+margin_right = 1058.0
+margin_bottom = 817.0
+texture_normal = ExtResource( 10 )
+
+[node name="restart_button" type="TextureButton" parent="."]
+margin_left = 800.0
+margin_top = 240.0
+margin_right = 1814.0
+margin_bottom = 1086.0
+rect_scale = Vector2( 0.25, 0.25 )
+texture_normal = ExtResource( 12 )
 
 [connection signal="item_selected" from="Player_1_Select" to="." method="_on_Player_1_Select_item_selected"]
 [connection signal="item_selected" from="Player_2_Select" to="." method="_on_Player_2_Select_item_selected"]
 [connection signal="button_down" from="Start_Button" to="." method="_on_Start_Button_button_down"]
+[connection signal="button_down" from="restart_button" to="." method="_on_restart_button_button_down"]

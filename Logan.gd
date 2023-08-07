@@ -2,7 +2,7 @@ extends KinematicBody2D
 
 var jumpforce = 1000
 var gravity = 25
-var damage = .30
+var damage = .25
 var max_health = 15
 var health = 15
 var attacking = false

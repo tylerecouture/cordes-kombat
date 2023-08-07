@@ -10,4 +10,5 @@ func _on_lightning_timer_timeout():
 	lightning.global_rotation_degrees -= 90
 	lightning.other_character = other_character
 	get_parent().add_child(lightning)
+	queue_free()
 

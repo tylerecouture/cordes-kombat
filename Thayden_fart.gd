@@ -1,7 +1,7 @@
 extends Area2D
 
 var other_character : Node2D
-var damage = .001
+var damage = .0017
 var speed = 10
 var velocity = Vector2.ZERO
 

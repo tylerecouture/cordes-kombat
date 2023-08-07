@@ -12,6 +12,7 @@ config_version=4
 
 config/name="Cordes Combat"
 run/main_scene="res://Boxing_Ring.tscn"
+boot_splash/image="res://assets/cordes-kombat-title.png"
 config/icon="res://icon.png"
 
 [autoload]

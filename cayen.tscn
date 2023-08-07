@@ -54,4 +54,8 @@ percent_visible = false
 wait_time = 2.0
 one_shot = true
 
+[node name="attack_timer" type="Timer" parent="."]
+wait_time = 3.0
+
 [connection signal="timeout" from="laugh_timer" to="." method="_on_cry_timer_timeout"]
+[connection signal="timeout" from="attack_timer" to="." method="_on_attack_timer_timeout"]

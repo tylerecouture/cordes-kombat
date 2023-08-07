@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-var health = 100
+var health = 45
 var attacking = false
 var can_move = true
 var knockback = 0
@@ -29,7 +29,7 @@ func _ready():
 func _physics_process(delta):
 	if is_instance_valid(other_character):
 		if health <= 0:
-			$Health_bar.hide()
+			$HealthBar.hide()
 			$AnimatedSprite.play("explosion")
 			yield($AnimatedSprite , "animation_finished")
 			queue_free()
@@ -64,6 +64,8 @@ func _physics_process(delta):
 		$HealthBar.value = health
 
 func attack():
+	can_hit = false
+	$attack_timer.start()
 	for i in range(30):
 		var cayen_cloud = Cayen_cloud.instance()
 		cayen_cloud.global_position = Vector2(rng.randf_range(0,1920) , 100)
@@ -79,3 +81,7 @@ func hit():
 
 func _on_cry_timer_timeout():
 	$attack.play()
+
+
+func _on_attack_timer_timeout():
+	can_hit = true
